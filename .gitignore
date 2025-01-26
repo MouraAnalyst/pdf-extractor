@@ -33,9 +33,13 @@ Pipfile.lock
 *.swp
 *.swo
 
-# Project specific
-tests_/
-*.pdf
-*.csv
-*.xlsx
-*.xls
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Misc
+.DS_Store
+Thumbs.db
