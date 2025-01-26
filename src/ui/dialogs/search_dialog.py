@@ -10,6 +10,8 @@ from PySide6.QtWidgets import (
     QFrame,
 )
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QIcon
+import os
 from pdf_processor.pdf_extractor import PDFExtractor
 from ui.styles.style import COLORS, FONTS
 from .excel_import_dialog import ExcelImportDialog
@@ -177,6 +179,15 @@ class SearchDialog(QDialog):
         self.setWindowTitle("Búsqueda en PDFs")
         self.setFixedSize(500, 400)  # Tamaño fijo
         self.setStyleSheet(DIALOG_STYLES["dialog"])
+
+        # Establecer el ícono
+        icon_path = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
+            "resources",
+            "images",
+            "logo.ico",
+        )
+        self.setWindowIcon(QIcon(icon_path))
 
         # Layout principal
         main_layout = QVBoxLayout(self)

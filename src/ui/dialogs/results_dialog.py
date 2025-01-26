@@ -11,6 +11,8 @@ from PySide6.QtWidgets import (
     QMessageBox,
 )
 from PySide6.QtCore import Qt, QSize
+from PySide6.QtGui import QIcon
+import os
 from ui.styles.style import COLORS, FONTS
 import csv
 
@@ -109,6 +111,15 @@ class ResultsDialog(QDialog):
         self.setStyleSheet(DIALOG_STYLES["dialog"])
         self.results = results or []
         self.is_maximized = False
+
+        # Establecer el ícono
+        icon_path = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
+            "resources",
+            "images",
+            "logo.ico",
+        )
+        self.setWindowIcon(QIcon(icon_path))
 
         # Layout principal
         layout = QVBoxLayout(self)

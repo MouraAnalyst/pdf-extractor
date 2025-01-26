@@ -15,7 +15,7 @@ from PySide6.QtWidgets import (
     QDialog,
 )
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QFont, QAction
+from PySide6.QtGui import QFont, QAction, QIcon
 from ui.styles.style import STYLES, FONTS, COLORS
 import os
 from ui.dialogs.search_dialog import SearchDialog
@@ -29,6 +29,14 @@ class MainWindow(QMainWindow):
         self.setMinimumSize(1000, 700)
         self.setStyleSheet(STYLES["main_window"])
         self.last_results = None  # Almacenar últimos resultados
+
+        # Configurar flags de la ventana para ocultar el ícono
+        flags = (
+            Qt.WindowType.Window
+            | Qt.WindowType.WindowMinMaxButtonsHint
+            | Qt.WindowType.WindowCloseButtonHint
+        )
+        self.setWindowFlags(flags)
 
         # Configurar el widget central
         self.central_widget = QWidget()

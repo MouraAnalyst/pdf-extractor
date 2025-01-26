@@ -8,6 +8,8 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QIcon
+import os
 from ui.styles.style import COLORS
 import pandas as pd
 
@@ -78,6 +80,15 @@ class ExcelImportDialog(QDialog):
         self.setFixedSize(500, 250)
         self.setStyleSheet(DIALOG_STYLES["dialog"])
         self.search_terms = []
+
+        # Establecer el ícono
+        icon_path = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
+            "resources",
+            "images",
+            "logo.ico",
+        )
+        self.setWindowIcon(QIcon(icon_path))
 
         # Layout principal
         layout = QVBoxLayout(self)

@@ -1,18 +1,16 @@
 # src/main.py
 import sys
+import os
 from PySide6.QtWidgets import QApplication
-from PySide6.QtGui import QFontDatabase
 from ui.main_window import MainWindow
 
 
 def main():
+    # Forzar el uso de X11
+    os.environ["QT_QPA_PLATFORM"] = "xcb"
+    os.environ["XDG_SESSION_TYPE"] = "x11"
+
     app = QApplication(sys.argv)
-
-    # Verificar fuentes disponibles
-    print("Fuentes disponibles:")
-    for family in QFontDatabase().families():
-        print(family)
-
     window = MainWindow()
     window.show()
     sys.exit(app.exec())
